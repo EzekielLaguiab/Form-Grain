@@ -10,12 +10,6 @@
 
 ---
 
-## 🚀 Live Demo
-
-> _Coming soon — deploy via GitHub Pages to share your site with the world!_
-
----
-
 ## 🛠️ Built With
 
 | Technology | Usage |
@@ -54,15 +48,6 @@ open index.html
 ```
 
 Or simply double-click `index.html` to open it in your default browser.
-
----
-
-## 🌐 Deploying with GitHub Pages
-
-1. Go to your repository **Settings**
-2. Navigate to **Pages** under the *Code and automation* section
-3. Under **Branch**, select `main` and click **Save**
-4. Your site will be live at `https://ezekiellaguiab.github.io/Form-Grain/`
 
 ---
 
