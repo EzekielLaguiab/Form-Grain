@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FORM & GRAIN — Furniture</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="toast" id="toast"></div>
+
+<!-- CART DRAWER -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <span class="cart-title">Your Selection</span>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <p style="color:var(--stone);text-align:center;margin-top:48px;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:18px;">Your cart is empty</p>
+  </div>
+  <div class="cart-foot">
+    <div class="cart-subtotal"><span>Subtotal</span><span id="cartTotal">$0</span></div>
+    <button class="checkout-btn" onclick="showToast('Checkout coming soon!')">Proceed to Checkout</button>
+    <p class="cart-note">Free delivery on orders over $500 · Easy returns</p>
+  </div>
+</div>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#categories" onclick="closeMobile()">Shop</a>
+  <a href="#featured"   onclick="closeMobile()">New Arrivals</a>
+  <a href="#story"      onclick="closeMobile()">Our Story</a>
+  <a href="#newsletter" onclick="closeMobile()">Contact</a>
+  <button class="mobile-nav-cart" onclick="closeMobile();toggleCart()">
+    Cart (<span id="mobileCartCount">0</span>)
+  </button>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">FORM<span>&</span>GRAIN</a>
+  <ul class="nav-links">
+    <li><a href="#categories">Shop</a></li>
+    <li><a href="#featured">New Arrivals</a></li>
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#newsletter">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="toggleCart()">
+      <span class="cart-label">Cart</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+    <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">New Collection 2026</div>
+    <h1 class="hero-heading">Where Form<br>Meets <em>Natural</em><br>Beauty</h1>
+    <p class="hero-subtext">Furniture crafted from sustainably sourced hardwoods. Each piece a quiet study in the elegance of honest materials.</p>
+    <div class="hero-actions">
+      <a href="#categories" class="btn-primary">Explore Collection</a>
+      <a href="#story" class="btn-text">Our Craft →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">240+</span><span class="stat-label">Unique Pieces</span></div>
+      <div class="stat-item"><span class="stat-num">18</span><span class="stat-label">Wood Species</span></div>
+      <div class="stat-item"><span class="stat-num">12yr</span><span class="stat-label">Guarantee</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-image-grid">
+      <div class="hero-img-cell large">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80" alt="Feature sofa"/>
+        
+      </div>
+      <div class="hero-img-cell">
+        <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400&q=80" alt="Chair"/>
+      </div>
+      <div class="hero-img-cell">
+        <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400&q=80" alt="Table"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">Sustainably Sourced Hardwoods</span>
+    <span class="marquee-item">Handcrafted in Small Batches</span>
+    <span class="marquee-item">12-Year Structural Guarantee</span>
+    <span class="marquee-item">Free White-Glove Delivery</span>
+    <span class="marquee-item">Custom Sizing Available</span>
+    <span class="marquee-item">Sustainably Sourced Hardwoods</span>
+    <span class="marquee-item">Handcrafted in Small Batches</span>
+    <span class="marquee-item">12-Year Structural Guarantee</span>
+    <span class="marquee-item">Free White-Glove Delivery</span>
+    <span class="marquee-item">Custom Sizing Available</span>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="categories reveal" id="categories">
+  <div class="section-header">
+    <h2 class="section-title">Shop by <em>Category</em></h2>
+    <a href="#" class="section-link">View All Rooms →</a>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80" alt="Living Room"/>
+      <div class="cat-info"><div class="cat-name">Living Room</div><div class="cat-count">84 pieces</div></div>
+    </div>
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=500&q=80" alt="Bedroom"/>
+      <div class="cat-info"><div class="cat-name">Bedroom</div><div class="cat-count">62 pieces</div></div>
+    </div>
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=500&q=80" alt="Dining"/>
+      <div class="cat-info"><div class="cat-name">Dining</div><div class="cat-count">41 pieces</div></div>
+    </div>
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=500&q=80" alt="Office"/>
+      <div class="cat-info"><div class="cat-name">Office</div><div class="cat-count">33 pieces</div></div>
+    </div>
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=500&q=80" alt="Outdoor"/>
+      <div class="cat-info"><div class="cat-name">Outdoor</div><div class="cat-count">20 pieces</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="products reveal" id="featured">
+  <div class="section-header">
+    <h2 class="section-title">New <em>Arrivals</em></h2>
+    <a href="#" class="section-link">View All →</a>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <span class="product-badge">New</span>
+        <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=600&q=80" alt="Arco Lounge Chair"/>
+        <div class="product-actions">
+          <button class="pa-btn add" onclick="addToCart('Arco Lounge Chair',1890,'Walnut / Linen',this)">Add to Cart</button>
+          <button class="pa-btn wish">♡</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Seating</div>
+        <div class="product-name">Arco Lounge Chair</div>
+        <div class="product-price"><span class="price-now">$1,890</span></div>
+        <div class="product-swatch">
+          <span class="swatch active" style="background:#8B7355;"></span>
+          <span class="swatch" style="background:#C4A882;"></span>
+          <span class="swatch" style="background:#2C2C2C;"></span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <span class="product-badge">Sale</span>
+        <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&q=80" alt="Forma Sectional"/>
+        <div class="product-actions">
+          <button class="pa-btn add" onclick="addToCart('Forma Sectional',3240,'Sage Boucle',this)">Add to Cart</button>
+          <button class="pa-btn wish">♡</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Sofas</div>
+        <div class="product-name">Forma Sectional</div>
+        <div class="product-price"><span class="price-now">$3,240</span><span class="price-old">$3,800</span></div>
+        <div class="product-swatch">
+          <span class="swatch active" style="background:#7A8C6E;"></span>
+          <span class="swatch" style="background:#D4C5A9;"></span>
+          <span class="swatch" style="background:#8C8478;"></span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1549497538-303791108f95?w=600&q=80" alt="Halo Dining Table"/>
+        <div class="product-actions">
+          <button class="pa-btn add" onclick="addToCart('Halo Dining Table',2150,'White Oak',this)">Add to Cart</button>
+          <button class="pa-btn wish">♡</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Tables</div>
+        <div class="product-name">Halo Dining Table</div>
+        <div class="product-price"><span class="price-now">$2,150</span></div>
+        <div class="product-swatch">
+          <span class="swatch active" style="background:#C4A882;"></span>
+          <span class="swatch" style="background:#8B7355;"></span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <span class="product-badge">New</span>
+        <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=600&q=80" alt="Stem Floor Lamp"/>
+        <div class="product-actions">
+          <button class="pa-btn add" onclick="addToCart('Stem Floor Lamp',680,'Brass / Ivory',this)">Add to Cart</button>
+          <button class="pa-btn wish">♡</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Lighting</div>
+        <div class="product-name">Stem Floor Lamp</div>
+        <div class="product-price"><span class="price-now">$680</span></div>
+        <div class="product-swatch">
+          <span class="swatch active" style="background:#C8A96E;"></span>
+          <span class="swatch" style="background:#8C8478;"></span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80" alt="Lune Bed Frame"/>
+        <div class="product-actions">
+          <button class="pa-btn add" onclick="addToCart('Lune Bed Frame',2890,'King / Walnut',this)">Add to Cart</button>
+          <button class="pa-btn wish">♡</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Bedroom</div>
+        <div class="product-name">Lune Bed Frame</div>
+        <div class="product-price"><span class="price-now">$2,890</span></div>
+        <div class="product-swatch">
+          <span class="swatch active" style="background:#8B7355;"></span>
+          <span class="swatch" style="background:#C4A882;"></span>
+          <span class="swatch" style="background:#F5F0E8;"></span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <span class="product-badge">Sale</span>
+        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80" alt="Arc Writing Desk"/>
+        <div class="product-actions">
+          <button class="pa-btn add" onclick="addToCart('Arc Writing Desk',1420,'Black Walnut',this)">Add to Cart</button>
+          <button class="pa-btn wish">♡</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Office</div>
+        <div class="product-name">Arc Writing Desk</div>
+        <div class="product-price"><span class="price-now">$1,420</span><span class="price-old">$1,680</span></div>
+        <div class="product-swatch">
+          <span class="swatch active" style="background:#2C2C2C;"></span>
+          <span class="swatch" style="background:#8B7355;"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story reveal" id="story">
+  <div class="story-img">
+    <img src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=900&q=80" alt="Workshop"/>
+  </div>
+  <div class="story-content">
+    <div class="story-eyebrow">Our Story</div>
+    <h2 class="story-heading">Craft is a Dialogue<br>Between Wood & Hand</h2>
+    <p class="story-text">Founded in 2008 in the forests of Vermont, Form & Grain grew from a single workshop and an obsession with honest materials. Every joinery is hand-cut. Every finish is oil-rubbed. Every piece ships with a hand-written provenance card.</p>
+    <ul class="story-features">
+      <li>FSC-certified hardwoods from regenerative forests</li>
+      <li>No particle board, no veneers — solid wood only</li>
+      <li>In-house craftspeople, never outsourced</li>
+      <li>Carbon-neutral shipping on all US orders</li>
+    </ul>
+    <a href="#" class="btn-primary">Meet the Makers</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials reveal">
+  <div class="section-header">
+    <h2 class="section-title">What Our <em>Clients</em> Say</h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-quote">"The Arco chair arrived and my living room finally felt complete. The walnut grain is extraordinary — every guest asks where it's from."</p>
+      <div class="test-author">— Margot L., New York</div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-quote">"We've had the dining table for three years. It's only gotten more beautiful. That's the thing about real wood — it ages with you."</p>
+      <div class="test-author">— James & Petra K., Portland</div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-quote">"The white-glove delivery team placed everything exactly right. The provenance card for our bed frame is framed on the wall now."</p>
+      <div class="test-author">— Sofia R., Chicago</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter reveal" id="newsletter">
+  <div>
+    <h2 class="nl-heading">Stay Close to<br>the <em>Craft</em></h2>
+    <p class="nl-text">New arrivals, limited editions, and behind-the-scenes from the workshop — delivered quietly, never spammy.</p>
+  </div>
+  <div class="nl-form">
+    <div class="nl-row">
+      <input class="nl-input" type="text" placeholder="First name"/>
+      <input class="nl-input" type="email" placeholder="Email address"/>
+    </div>
+    <div class="nl-row">
+      <button class="nl-btn" onclick="showToast('Welcome to the community!')">Subscribe</button>
+    </div>
+    <p class="nl-note">No spam. Unsubscribe any time.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">FORM<span>&</span>GRAIN</div>
+      <p class="footer-tagline">Furniture that grows more beautiful with every year it's lived in.</p>
+      <div class="footer-social">
+        <a href="#" class="social-link">in</a>
+        <a href="#" class="social-link">ig</a>
+        <a href="#" class="social-link">pi</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">Living Room</a></li>
+        <li><a href="#">Bedroom</a></li>
+        <li><a href="#">Dining</a></li>
+        <li><a href="#">Office</a></li>
+        <li><a href="#">Outdoor</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Craftspeople</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <ul>
+        <li><a href="#">Delivery & Returns</a></li>
+        <li><a href="#">Care Guide</a></li>
+        <li><a href="#">Custom Orders</a></li>
+        <li><a href="#">Trade Program</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Form & Grain. All rights reserved.</span>
+    <div class="footer-legal">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
